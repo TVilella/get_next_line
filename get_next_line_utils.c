@@ -6,7 +6,8 @@
 /*   By: tcarvalh <tcarvalh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:34:44 by tcarvalh          #+#    #+#             */
-/*   Updated: 2022/01/08 19:34:44 by tcarvalh         ###   ########.fr       */
+/*   Updated: 2022/01/09 05:54:33 by tcarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
