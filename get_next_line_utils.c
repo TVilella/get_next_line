@@ -6,7 +6,7 @@
 /*   By: tcarvalh <tcarvalh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:34:44 by tcarvalh          #+#    #+#             */
-/*   Updated: 2022/01/09 17:16:21 by tcarvalh         ###   ########.fr       */
+/*   Updated: 2022/01/09 20:17:08 by tcarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ char	*ft_strchr(const char *s, int c)
 
 char	*ft_strdup(const char *s1)
 {
-	char	*ptr;
+	char	*new;
 	size_t	len;
 
 	len = ft_strlen(s1);
-	ptr = (char *)malloc(len + 1);
-	if (ptr != NULL)
-		ft_strlcpy(ptr, s1, len + 1);
-	return (ptr);
+	new = (char *)malloc(len + 1);
+	if (new != NULL)
+		ft_strlcpy(new, s1, len + 1);
+	return (new);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
