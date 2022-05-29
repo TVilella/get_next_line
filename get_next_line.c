@@ -6,7 +6,7 @@
 /*   By: tcarvalh <tcarvalh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:34:40 by tcarvalh          #+#    #+#             */
-/*   Updated: 2022/05/29 19:23:57 by tcarvalh         ###   ########.fr       */
+/*   Updated: 2022/05/29 21:14:09 by tcarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,19 @@ static char	*read_until_nl(int fd, char *str)
 static char	*save_remainder(char *str)
 {
 	char	*remainder;
-	size_t	pos;
 	size_t	len;
 	size_t	index;
 
-	len = ft_strlen(str);
-	pos = ft_strlen(ft_strchr(str, '\n'));
 	index = 0;
-	if (!pos || len == (pos + 1))
-	{
-		return (NULL);
-	}
-	remainder = (char *)malloc(sizeof (char) * (len - pos + 1));
-	while (index < len - pos)
-	{
-		remainder[index] = str[len - pos + index];
+	len = ft_strlen(str);
+	while (str[index] != '\0' && str[index] != '\n')
 		index++;
-	}
-	remainder[index] = '\0';
+	if (!str[index])
+		return (NULL);
+	remainder = (char *)malloc(sizeof (char) * (len - index + 1));
+	if (!remainder)
+		return (NULL);
+	ft_strlcpy(remainder, str + index + 1, len - index + 1);
 	return (remainder);
 }
 
@@ -68,11 +63,13 @@ static char	*extract_line(char *str)
 {
 	char	*line;
 	size_t	pos;
+	size_t	len;
 
-	pos = ft_strlen(ft_strchr(str, '\n'));
+	len = ft_strlen(str);
+	pos = len - ft_strlen(ft_strchr(str, '\n'));
 	line = (char *)malloc(sizeof(char) * (pos + 1));
 	ft_strlcpy(line, str, pos + 1);
-	return (NULL);
+	return (line);
 }
 
 char	*get_next_line(int fd)
@@ -81,6 +78,9 @@ char	*get_next_line(int fd)
 	char		*str;
 	char		*line;
 
+	line = NULL;
+	if( fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	if (!prev_str)
 		str = ft_strdup("");
 	else

@@ -6,7 +6,7 @@
 /*   By: tcarvalh <tcarvalh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:34:44 by tcarvalh          #+#    #+#             */
-/*   Updated: 2022/05/29 14:49:00 by tcarvalh         ###   ########.fr       */
+/*   Updated: 2022/05/29 20:49:10 by tcarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ char	*ft_strdup(const char *s1)
 
 	len = ft_strlen(s1);
 	new = (char *)malloc(len + 1);
-	if (new != NULL)
-		ft_strlcpy(new, s1, len + 1);
+	if (!new)
+		return (NULL);
+	ft_strlcpy(new, s1, len + 1);
 	return (new);
 }
 
