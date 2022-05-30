@@ -6,7 +6,7 @@
 /*   By: tcarvalh <tcarvalh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:34:40 by tcarvalh          #+#    #+#             */
-/*   Updated: 2022/05/30 16:06:06 by tcarvalh         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:16:40 by tcarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,18 @@ static char	*save_remainder(char *str)
 
 static char	*extract_line(char *str)
 {
-	int		i;
+	int		index;
 	char	*line;
 
-	i = 0;
+	index = 0;
 	if (!str)
 		return (NULL);
-	while (str[i] != '\0' && str[i] != '\n')
-		i++;
-	line = (char *)malloc(sizeof (char) * (i + 2));
+	while (str[index] != '\0' && str[index] != '\n')
+		index++;
+	line = (char *)malloc(sizeof (char) * (index + 2));
 	if (!line)
 		return (NULL);
-	ft_strlcpy(line, str, i + 2);
+	ft_strlcpy(line, str, index + 2);
 	if (line[0] == '\0')
 	{
 		free(line);
