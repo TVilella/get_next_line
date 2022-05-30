@@ -6,13 +6,12 @@
 /*   By: tcarvalh <tcarvalh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:34:46 by tcarvalh          #+#    #+#             */
-/*   Updated: 2022/05/30 15:46:57 by tcarvalh         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:04:48 by tcarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-
 # include <unistd.h>
 # include <stdlib.h>
 

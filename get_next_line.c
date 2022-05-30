@@ -6,12 +6,11 @@
 /*   By: tcarvalh <tcarvalh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:34:40 by tcarvalh          #+#    #+#             */
-/*   Updated: 2022/05/30 15:46:55 by tcarvalh         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:06:06 by tcarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 static char	*read_until_nl(int fd, char *str, char *buf)
 {
