@@ -6,43 +6,39 @@
 /*   By: tcarvalh <tcarvalh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:34:40 by tcarvalh          #+#    #+#             */
-/*   Updated: 2022/05/30 15:34:27 by tcarvalh         ###   ########.fr       */
+/*   Updated: 2022/05/30 15:46:55 by tcarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-static char	*read_until_nl(int fd, char *str)
+static char	*read_until_nl(int fd, char *str, char *buf)
 {
 	ssize_t		size;
 	char		*tmp;
-	char		*buffer;
 	int			nl;
 
 	size = BUFFER_SIZE;
 	nl = 0;
-	buffer = (char *)malloc(sizeof (char) * (BUFFER_SIZE + 1));
-	if (!buffer)
-		return (NULL);
 	while (!nl && size == BUFFER_SIZE)
 	{
-		size = read(fd, buffer, BUFFER_SIZE);
+		size = read(fd, buf, BUFFER_SIZE);
 		if (size == -1)
 		{
-			free(buffer);
+			free(buf);
 			return (NULL);
 		}
-		buffer[size] = '\0';
+		buf[size] = '\0';
 		if (!str)
 			str = ft_strdup("");
 		tmp = str;
-		str = ft_strjoin(tmp, buffer);
+		str = ft_strjoin(tmp, buf);
 		free(tmp);
 		if (ft_strchr(str, '\n'))
 			nl = 1;
 	}
-	free(buffer);
+	free(buf);
 	return (str);
 }
 
@@ -95,10 +91,15 @@ char	*get_next_line(int fd)
 {
 	char		*line;
 	static char	*str;
+	char		*buf;
 
+	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	str = read_until_nl(fd, str);
+	buf = (char *)malloc(sizeof (char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (NULL);
+	str = read_until_nl(fd, str, buf);
 	if (!str)
 		return (NULL);
 	line = extract_line(str);

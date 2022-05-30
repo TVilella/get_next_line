@@ -6,7 +6,7 @@
 /*   By: tcarvalh <tcarvalh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:34:46 by tcarvalh          #+#    #+#             */
-/*   Updated: 2022/01/09 19:35:11 by tcarvalh         ###   ########.fr       */
+/*   Updated: 2022/05/30 15:46:57 by tcarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
